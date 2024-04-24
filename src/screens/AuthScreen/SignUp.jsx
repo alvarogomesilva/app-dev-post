@@ -1,8 +1,11 @@
-import { Text, TextInput, TouchableOpacity } from "react-native";
+import { Keyboard, Text, TextInput, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { Spinner } from "../../components/Spinner";
 
 export default function SignUp() {
+    const { signUp } = useContext(AuthContext)
     const [inputs, setInputs] = useState({
         name: "",
         email: "",
@@ -11,9 +14,10 @@ export default function SignUp() {
 
     const handleSignUp = async () => {
         if (!inputs.name || !inputs.email || !inputs.password) return;
-
-        console.log(inputs)
+        Keyboard.dismiss()
+        await signUp(inputs)
     }
+
 
     return (
         <>
@@ -26,6 +30,7 @@ export default function SignUp() {
 
             <TextInput
                 placeholder="Seu email"
+                autoCapitalize="none"
                 style={styles.input}
                 value={inputs.email}
                 onChangeText={(text) => setInputs({...inputs, email: text})}
@@ -33,6 +38,7 @@ export default function SignUp() {
 
             <TextInput
                 placeholder="Sua senha"
+                secureTextEntry={true}
                 style={styles.input}
                 value={inputs.password}
                 onChangeText={(text) => setInputs({...inputs, password: text})}
@@ -40,7 +46,7 @@ export default function SignUp() {
 
             <TouchableOpacity 
                 style={styles.button} 
-                activeOpacity={0.9}
+                activeOpacity={0.8}
                 onPress={handleSignUp}    
             >
                 <Text style={styles.textButton}>Cadastrar</Text>
