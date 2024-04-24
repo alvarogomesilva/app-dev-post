@@ -25,7 +25,7 @@ export default function SignUp() {
             />
 
             <TextInput
-                placeholder="Sua senha"
+                placeholder="Seu email"
                 style={styles.input}
                 value={inputs.email}
                 onChangeText={(text) => setInputs({...inputs, email: text})}
