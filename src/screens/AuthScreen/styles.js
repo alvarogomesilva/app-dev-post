@@ -50,6 +50,6 @@ export const styles = StyleSheet.create({
 
     linkText: {
         color: COLORS.white,
-        fontSize: 16
+        fontSize: 18
     }
 })

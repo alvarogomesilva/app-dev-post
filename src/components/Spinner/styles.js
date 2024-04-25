@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         position: 'absolute',
-        opacity: 0.7,
+        opacity: 0.8,
         backgroundColor: COLORS.black,
         justifyContent: 'center',
         alignItems: 'center',
